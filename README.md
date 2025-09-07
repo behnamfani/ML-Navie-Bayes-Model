@@ -44,6 +44,15 @@ import scipy.interpolate
 
 ![Naive Bayes Classifier](naive_bayes_icon.png)
 
+---
 
+## 📊 Dataset
+- **Large Movie Review Dataset**:
+  - **Train Set**: Contains `pos` and `neg` folders with labeled comments.
+  - **Test Set**: Used to evaluate model performance after training.
 
 ---
+
+## 📝 Implementation Details
+- The code includes **detailed comments** to explain each step of the process.
+- The model is trained on the **training set** and evaluated on the **test set** to measure accuracy.
