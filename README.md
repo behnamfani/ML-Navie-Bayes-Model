@@ -1,33 +1,49 @@
-# ML-Navie-Bayes-Model
-A Naive Bayes model for predicting the class of IMDB's users' comments. 
+# Naive Bayes Model for IMDB Sentiment Analysis
 
-For running this program, these libraries are required:
+A **Naive Bayes classifier** implemented in Python to predict the sentiment (positive or negative) of **IMDB user comments**. This model leverages probabilistic learning to classify text based on word frequencies and prior probabilities.
 
-- from __future__ import division
+---
 
-- import tokenizer
+## 📌 Overview
+This project uses the **Naive Bayes algorithm** to classify movie reviews from the **Large Movie Review Dataset** as either **positive** or **negative**. The model is trained on **25,000 labeled comments** (12,500 positive and 12,500 negative) and evaluates its performance on a separate test set.
 
-- import math
+📚 **[Naive Bayes Reference](https://uc-r.github.io/naive_bayes)**
 
-- import numpy as np
+---
 
-- import os
+## 🛠️ Dependencies
+The following Python libraries are required:
+```python
+from __future__ import division
+import tokenizer
+import math
+import numpy as np
+import os
+import scipy.interpolate
+```
 
-- import scipy.interpolate
+---
 
-This model tells us if a given comment is a positive one or a negative comment. For the learning process, I gave this model 25000 comments (each class has 12500 instances). By processing all labeled training data and using naive Bayes, the model computes and stores the information (probabilities) about input vectors X (comments), their features (words), and the classes Y (positive or negative) they belong to. 
+## 🔧 Model Workflow
 
-You can see the Naive Bayes Classifier here: [1]
+### **1. Training Phase**
+- **Input**: Labeled training data (25,000 comments).
+- **Process**:
+  - Tokenize comments into word features.
+  - Compute **conditional probabilities** of words given each class (positive/negative).
+  - Store prior probabilities of classes and feature likelihoods.
 
-![](naive_bayes_icon.png)
+### **2. Prediction Phase**
+- For a **new comment**, the model:
+  1. Extracts features (words) and creates a feature vector.
+  2. Computes the probability of the comment belonging to each class using **Bayes' theorem**:
+     \[
+     P(\text{Class} \mid \text{Comment}) \propto P(\text{Comment} \mid \text{Class}) \times P(\text{Class})
+     \]
+  3. Predicts the class with the **higher probability**.
 
-For a new data, based on the feature vector of the new data and their precomputed probabilities of features observation in each class, it calculates two probabilities. One is the comment that belongs to the negative class, and the other one is the comment that belongs to the positive class. The higher probability is the predicted class.
-
-Large_movie_review_dataset has train and test folders. Each folder contains the pos and neg comments. First, we train the model with data in the train set. Then we can see how it performs on the test set.
-
-The comments in the .py file will help you to have a better intuition of how it works.
-
-Thank you for your attention!
+![Naive Bayes Classifier](naive_bayes_icon.png)
 
 
-[1]: https://uc-r.github.io/naive_bayes
+
+---
